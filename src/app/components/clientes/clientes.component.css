@@ -1,0 +1,10 @@
+div.alert.fadeInUp {
+    animation-duration: 5s;
+    animation-delay: 0.5s;
+    /*animation-iteration-count: infinite;*/
+}
+
+.imagenSize {
+    height: 200px;
+    width: 300px;
+}

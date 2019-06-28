@@ -1,0 +1,47 @@
+<div class="abrirModal animated fadeIn" *ngIf="modalService.modalShow">
+    <div *ngIf="cliente && modalService.modalShow" class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalle cliente</h5>
+                    <button (click)="cerrarModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="pt-2">{{cliente.nombre}} {{cliente.apellido}}</p>
+                            <p class="pt-2">{{cliente.email}}</p>
+                            <p class="pt-2">{{cliente.createAt}}</p>
+                            <p class="pt-2">{{cliente.region.name}}</p>
+                        </div>
+                        <div class="col-md-6 animated fadeIn">
+                            <img class="imagenSize img-thumbnail" [src]="cliente.foto | noImage" alt="">
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="input-group pt-2">
+                                <div class="custom-file">
+                                    <input (change)="obtenerImagen($event)" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                                    <label class="custom-file-label" for="inputGroupFile04">Elegir un archivo</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <button [disabled]="!nameFoto" (click)="subirFoto()" class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Subir archivo</button>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" [ngStyle]="{'width': progres+ '%'}" attr.aria-valuenow="{{progres}}" aria-valuemin="0" aria-valuemax="100">
+                                    {{progres}}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

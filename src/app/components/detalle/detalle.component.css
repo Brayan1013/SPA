@@ -1,0 +1,22 @@
+.imagenSize {
+    height: 200px;
+    width: 400px;
+}
+
+.modal-backdrop {
+    opacity: 0.5;
+}
+
+.moda-dialog {
+    opacity: 1;
+}
+
+.abrirModal {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}

@@ -1,0 +1,39 @@
+<app-detalle *ngIf="clienteSeleccionado" [cliente]="clienteSeleccionado"></app-detalle>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 alert alert-info animated fadeInUp" id="noClient" *ngIf="clientes?.length == 0">
+            <h3 class="text-center">No existe ningun cliente</h3>
+        </div>
+    </div>
+    <div class="card border-info mb-3 animated fadeIn delay-0.5s" *ngIf="clientes?.length > 0">
+        <div class="card-header">Clientes</div>
+        <div class="card-body text-info">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cliente of clientes">
+                        <td><img (click)="abrirModal(cliente.id)" [src]="cliente.foto | noImage" style="width: 64px; cursor: pointer;" alt=""></td>
+                        <td>{{cliente.nombre | uppercase}}</td>
+                        <td>{{cliente.apellido}}</td>
+                        <td>{{cliente.email}}</td>
+                        <td>{{cliente.createAt | date:'fullDate'}}</td>
+                        <td><button (click)="getCliente(cliente.id)" class="btn btn-warning">Actualizar</button></td>
+                        <td><button (click)="deleteCliente(cliente)" class="btn btn-danger">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-paginador *ngIf="pages" [pages]="pages"></app-paginador>
+        </div>
+    </div>
+</div>
